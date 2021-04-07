@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-starwars{
+  background-color: #242335;
+}
+
+.bg-planet-starwars{
+  background-color: #15161a;
+}
+
+.bg-starships-starwars{
+  background-color: #2a3b46;
+}
