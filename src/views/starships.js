@@ -5,14 +5,21 @@ import { Context } from "../store/appContext";
 const Starships = () => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="container">
+    <div className="container pl-0 ml-5">
+      <div className="row">
+        <div className="col-7"></div>
+        <div className="col mt-4">
+          <h4 className="text-white">Starships</h4>
+        </div>
+        <div className="col"></div>
+      </div>
       <div className="row flex-row flex-nowrap row-cols-1 row-cols-md-4 pt-4">
         {!!store.starships &&
           store.starships.results.map((starships, index) => (
             <div className="planets col mb-4" key={index}>
-              <div className="card h-100 border-dark">
+              <div className="card h-100 border-dark bg-dark text-white">
                 <img
-                  src={`/img/${starships.name}.jpg`}
+                  src="https://www.cnet.com/a/img/zCS3dAJhSpM4Dk8Bee2Te8Uicu0=/1200x630/2020/01/09/f79a9662-35a4-4676-bbf6-b71a223e0a5c/ship-tie-razor-crest.jpg"
                   className="card-img-top border-danger border-bottom"
                   alt=""
                 />
@@ -31,7 +38,13 @@ const Starships = () => {
                       </button>
                     </div>
                     <div className="col-3">
-                      {/*    <Favorites favorite={planet.name} /> */}
+                      <button
+                        href="#"
+                        className="btn btn-outline-warning like-button"
+                        onClick={() => actions.addFavorites(starships.name)}
+                      >
+                        <i className="far fa-heart" />
+                      </button>
                     </div>
                   </div>
                 </div>

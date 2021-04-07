@@ -5,14 +5,21 @@ import { Context } from "../store/appContext";
 const Planets = () => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="container">
+    <div className="container pl-0 ml-5">
+      <div className="row">
+        <div className="col-7"></div>
+        <div className="col mt-4">
+          <h4 className="text-white">Planets</h4>
+        </div>
+        <div className="col"></div>
+      </div>
       <div className="row flex-row flex-nowrap row-cols-1 row-cols-md-4 pt-4">
         {!!store.planet &&
           store.planet.results.map((planet, index) => (
             <div className="planets col mb-4" key={index}>
-              <div className="card h-100 border-dark">
+              <div className="card h-100 border-dark bg-dark text-white">
                 <img
-                  src={`/img/${planet.name}.jpg`}
+                  src="https://starwarsblog.starwars.com/wp-content/uploads/2018/10/mustafar-tall.jpg"
                   className="card-img-top border-danger border-bottom"
                   alt=""
                 />
@@ -31,7 +38,13 @@ const Planets = () => {
                       </button>
                     </div>
                     <div className="col-3">
-                      {/*    <Favorites favorite={planet.name} /> */}
+                      <button
+                        href="#"
+                        className="btn btn-outline-warning like-button"
+                        onClick={() => actions.addFavorites(planet.name)}
+                      >
+                        <i className="far fa-heart" />
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -40,7 +53,8 @@ const Planets = () => {
           ))}
       </div>
       <div className="btn-group" role="group">
-        <button className="btn btn-success"
+        <button
+          className="btn btn-success"
           onClick={() => {
             if (store.planet !== null && store.planet.next !== null) {
               actions.getPlanets(store.planet.next);
@@ -49,7 +63,8 @@ const Planets = () => {
         >
           Next
         </button>
-        <button className="btn btn-danger"
+        <button
+          className="btn btn-danger"
           onClick={() => {
             if (store.planet !== null && store.planet.previous !== null) {
               actions.getPlanets(store.planet.previous);

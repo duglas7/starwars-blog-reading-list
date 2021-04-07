@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import Characters from "./characters";
 import Planets from "./planets";
@@ -7,18 +6,29 @@ import Starships from "./starships";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
+  useEffect(() => {
+    actions.addFavorites();
+    actions.deleteFavorites();
+  }, []);
   return (
     <>
-      <h1>Home</h1>
+      <div className="container-fluid p-0">
+        <div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
+          <Characters />
+        </div>
+      </div>
       <hr />
-      <h2>Personajes</h2>
-      <Characters />
+      <div className="container-fluid p-0">
+        <div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
+          <Planets />
+        </div>
+      </div>
       <hr />
-      <h2>Planetas</h2>
-      <hr />
-      <Planets />
-      <h2>Starships</h2>
-      <Starships />
+      <div className="container-fluid p-0">
+        <div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
+          <Starships />
+        </div>
+      </div>
       <hr />
     </>
   );
